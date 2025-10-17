@@ -1,5 +1,4 @@
 package mate.academy.bookonline.model;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,8 +35,9 @@ public class Book {
     private BigDecimal price;
 
     private String description;
+
     private String coverImage;
 
-    @Column(nullable = false)
+    @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;
 }

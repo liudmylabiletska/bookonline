@@ -5,6 +5,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import mate.academy.bookonline.dto.BookDto;
 import mate.academy.bookonline.dto.CreateBookRequestDto;
+import mate.academy.bookonline.dto.UpdateBookRequestDto;
 import mate.academy.bookonline.mapper.BookMapper;
 import mate.academy.bookonline.model.Book;
 import mate.academy.bookonline.repository.BookRepository;
@@ -23,10 +24,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto update(Long id, CreateBookRequestDto requestDto) {
+    public BookDto update(Long id, UpdateBookRequestDto requestDto) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Book not found with id " + id));
         bookMapper.updateModel(requestDto, book);
+
         return bookMapper.toDto(bookRepository.save(book));
     }
 

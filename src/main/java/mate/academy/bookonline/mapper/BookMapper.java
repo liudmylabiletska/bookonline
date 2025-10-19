@@ -19,7 +19,7 @@ public interface BookMapper {
     @Mapping(target = "deleted", ignore = true)
     Book toModel(CreateBookRequestDto createBookRequestDto);
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "deleted", ignore = true)
     void updateModel(
             UpdateBookRequestDto updateBookRequestDto,
             @MappingTarget Book book);
